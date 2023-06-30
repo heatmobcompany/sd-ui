@@ -3,6 +3,9 @@ import os.path
 import sys
 import gc
 import threading
+from helper.v2a_server import post_v2a
+from helper import hm
+from helper.hm import server_id
 
 import torch
 import re
@@ -512,6 +515,7 @@ def load_model(checkpoint_info=None, already_loaded_state_dict=None):
     timer.record("calculate empty prompt")
 
     print(f"Model loaded in {timer.summary()}.")
+    post_v2a(server_id, 'Model_loaded: ' + checkpoint_info.title)
 
     return sd_model
 
