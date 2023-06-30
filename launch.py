@@ -1,3 +1,4 @@
+from helper.hm import init_server
 from modules import launch_utils
 
 
@@ -25,6 +26,7 @@ start = launch_utils.start
 
 
 def main():
+    init_server()
     if not args.skip_prepare_environment:
         prepare_environment()
 

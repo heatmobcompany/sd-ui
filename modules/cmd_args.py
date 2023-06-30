@@ -5,6 +5,12 @@ from modules.paths_internal import models_path, script_path, data_path, extensio
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument("--google-id", type=str, help="Google id that run this script", default='')
+parser.add_argument("--server-id", type=str, help="Server id that run this script", default='')
+parser.add_argument("--group", type=str, help="Style selected", default='')
+parser.add_argument("--type", type=str, help="Type of server", default='colab')
+parser.add_argument("--share-url", type=str, help="Shared url defined extenal", default='')
+
 parser.add_argument("-f", action='store_true', help=argparse.SUPPRESS)  # allows running as root; implemented outside of webui
 parser.add_argument("--update-all-extensions", action='store_true', help="launch.py argument: download updates for all extensions when starting the program")
 parser.add_argument("--skip-python-version-check", action='store_true', help="launch.py argument: do not check python version")
