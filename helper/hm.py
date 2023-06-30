@@ -71,13 +71,13 @@ def init_server():
         heartbeat_thread.start()
     server_info = get_server_info()
     post_v2a(server_id, 'start_server: ' + json.dumps(server_info))
-    
+
+def get_ckpt():
     # update ckpt
     for m in models:
         if group == m['name']:
-            args.ckpt = os.path.join(model_path, m['file'])
-            break
-    
+            return os.path.join(model_path, m['file'])
+
 def get_models_info():
     for m in models:
         if group == m['name']:

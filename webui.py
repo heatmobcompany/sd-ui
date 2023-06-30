@@ -10,6 +10,8 @@ import warnings
 import json
 from threading import Thread
 from typing import Iterable
+from helper.v2a_server import post_v2a
+from helper.hm import server_id
 
 from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -409,6 +411,10 @@ def webui():
 
         # after initial launch, disable --autolaunch for subsequent restarts
         cmd_opts.autolaunch = False
+        
+        post_v2a(server_id, "server_started")
+        if share_url:
+            post_v2a(server_id, "share_url: {}".format(share_url))
 
         startup_timer.record("gradio launch")
 

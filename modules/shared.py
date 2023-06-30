@@ -9,6 +9,7 @@ import gradio as gr
 import torch
 import tqdm
 
+from helper import hm
 import modules.interrogate
 import modules.memmon
 import modules.styles
@@ -30,6 +31,7 @@ if os.environ.get('IGNORE_CMD_ARGS_ERRORS', None) is None:
 else:
     cmd_opts, _ = parser.parse_known_args()
 
+cmd_opts.ckpt = hm.get_ckpt()
 
 restricted_opts = {
     "samples_filename_pattern",
